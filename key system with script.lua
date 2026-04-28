@@ -14,7 +14,7 @@ local Config = {
     Secret          = "0046", -- This makes the script ONLY run from the key script. Even if they copy the original obfuscated script to bypass the key, they won't be able to!
     
     -- [3] Scripts & Links
-    MainScriptURL   = "https://raw.githubusercontent.com/Keeper13579/Life-Hub/refs/heads/main/encrypted%20version%20without%20key.lua", -- The raw URL of your main script
+    MainScriptURL   = "https://raw.githubusercontent.com/Keeper13579/Life-Hub/refs/heads/main/encrypted%20newest%20version%20protected.lua", -- The raw URL of your main script
     
     -- [4] Social Media Settings (Set to true to show, false to hide)
     ShowDiscord     = false,
