@@ -228,7 +228,7 @@ flyB.MouseButton1Click:Connect(function()
                             local tween = TweenService:Create(r, TweenInfo.new(dist/state.flySpd, Enum.EasingStyle.Linear), {CFrame = targetPos})
                             tween:Play()
                             tween.Completed:Wait() -- FIXED: Now waits for the movement to finish before looping!
-                            task.wait(0.2)
+                            task.wait(1)
                         end
                         i = i + 1
                     else task.wait(1) end
