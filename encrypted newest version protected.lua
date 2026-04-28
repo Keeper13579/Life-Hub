@@ -3,7 +3,7 @@
 local ProtectionConfig = {
     -- 🔴 CRITICAL: This MUST exactly match the 'Secret' value in your Key System's Config!
     -- If your Key System has: Secret = "Test"
-    -- Then this must also be: SecretKey = "Test"
+    -- Then this must also be: SecretKey = "0046",
     SecretKey = "0046",
     
     -- The name of your Hub (shown in the kick message if they try to bypass)
@@ -18,9 +18,6 @@ if not _G[ProtectionConfig.SecretKey] then
     end
     return -- Stops the rest of the script from loading!
 end
-
-
-
 
 -- [[ SERVICES & CORE ]] --
 local TweenService = game:GetService("TweenService")
@@ -227,8 +224,11 @@ flyB.MouseButton1Click:Connect(function()
                         if target and target.Parent then
                             local r = lp.Character.HumanoidRootPart
                             local targetPos = target:GetPivot() + Vector3.new(0, 5, 0)
-                            TweenService:Create(r, TweenInfo.new((r.Position - targetPos.Position).Magnitude/state.flySpd, Enum.EasingStyle.Linear), {CFrame = targetPos}):Play()
-                            task.wait(1.2)
+                            local dist = (r.Position - targetPos.Position).Magnitude
+                            local tween = TweenService:Create(r, TweenInfo.new(dist/state.flySpd, Enum.EasingStyle.Linear), {CFrame = targetPos})
+                            tween:Play()
+                            tween.Completed:Wait() -- FIXED: Now waits for the movement to finish before looping!
+                            task.wait(0.2)
                         end
                         i = i + 1
                     else task.wait(1) end
